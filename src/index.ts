@@ -6,7 +6,7 @@ import { report } from './report';
 import { runTests } from './tests';
 
 const main = async () => {
-  const repopulate = true;
+  const repopulate = false;
   if (repopulate) {
     await createEmailsTable(true, pg, mysql);
     await populateEmailsTable(60, pg, mysql);
