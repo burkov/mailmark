@@ -1,0 +1,25 @@
+{
+  "name": "mailmark",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "license": "WTFPL",
+  "scripts": {
+    "start": "ts-node src/index.ts"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "faker": "^5.5.3",
+    "knex": "^0.95.4",
+    "mysql2": "^2.2.5",
+    "npm-check-updates": "^11.4.1",
+    "ora": "^5.4.0",
+    "pg": "^8.6.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.4",
+    "typesync": "^0.8.0"
+  },
+  "devDependencies": {
+    "@types/faker": "^5.5.3",
+    "@types/pg": "^7.14.11"
+  }
+}

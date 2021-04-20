@@ -1,0 +1,23 @@
+version: "3.9"
+services: 
+    postgres:
+        image: postgres:latest
+        restart: always
+        environment: 
+            POSTGRES_DB: mailmark
+            POSTGRES_USER: mailmark
+            POSTGRES_PASSWORD: mailmark
+        ports: 
+            - 5432:5432
+    mysql:
+        image: mysql:5.6.41
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: mailmark
+            MYSQL_USER: mailmark
+            MYSQL_PASSWORD: mailmark
+            MYSQL_DATABASE: mailmark
+        ports: 
+            - 3306:3306
+
+        
