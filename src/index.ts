@@ -2,13 +2,12 @@ import { createEmailsTable } from './create-table';
 import { allSettled } from './helpers';
 import { mysql, pg } from './init-connection';
 import { populate as populateEmailsTable } from './populate';
-import { report } from './report';
 import { runTests } from './tests';
 
 const main = async () => {
   const repopulate = false;
   if (repopulate) {
-    await createEmailsTable(true, pg, mysql);
+    await createEmailsTable(false, pg, mysql);
     await populateEmailsTable(60, pg, mysql);
   }
 

@@ -4,7 +4,7 @@ const MIN_DATE = new Date(2014, 7, 8).getTime();
 const MAX_DATE = new Date().getTime();
 const step = Math.ceil((MAX_DATE - MIN_DATE) / 60_000_000);
 
-const fakeDate = (id: number): Date => faker.date.between(new Date(MIN_DATE + step * id), new Date(MIN_DATE + step * (id + 1)));
+export const fakeDate = (id: number): Date => faker.date.between(new Date(MIN_DATE + step * id), new Date(MIN_DATE + step * (id + 1)));
 
 export const fakeRows = (n: number, startFromId: number) => {
   const result = [];

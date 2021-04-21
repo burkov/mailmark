@@ -14,7 +14,7 @@ export const populate = async (nMillions: number, ...knexs: Knex[]) => {
     const rows = fakeRows(batchSize, startFrom);
     await allSettled(knexs, async (knex) => {
       await knex.batchInsert('emails', rows, 3_000);
-      report.ok(knex, `${(i + 1).toString().padStart(3, '0')} of ${iterations}: inserted ${batchSize / 1000}k record strating from id = ${startFrom}`);
+      report.ok(knex, `${(i+1).toString().padStart(3, '0')} of ${iterations}: inserted ${batchSize / 1000}k record strating from id = ${startFrom}`);
     });
   }
 };
