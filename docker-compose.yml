@@ -10,7 +10,7 @@ services:
         ports: 
             - 5432:5432
     mysql:
-        image: mysql:5.6.41
+        image: mysql:5.7.34
         restart: always
         environment:
             MYSQL_ROOT_PASSWORD: mailmark

@@ -1,4 +1,4 @@
-import { Knex } from 'knex';
+import knex, { Knex } from 'knex';
 import { allSettled } from './helpers';
 import { report } from './report';
 
@@ -32,19 +32,20 @@ import { report } from './report';
  * create index threadId on Emails (threadId);
  */
 
-export const createEmailsTable = async (truncate: boolean, ...knexs: Knex[]) => {
-  return allSettled(knexs, async (knex) => {
+export const truncateEmailsTable = async (...knexs: Knex[]) =>
+  allSettled(knexs, async (knex) => {
     if (await knex.schema.hasTable('emails')) {
-      report.skip(knex, `already has table 'Emails'`);
-      if (truncate) {
-        report.ok(knex, `truncating table 'Emails'`);
-        await knex('emails').truncate();
-      }
-      return undefined;
+      report.ok(knex, `truncating table 'Emails'`);
+      return knex('emails').truncate();
     }
-    report.ok(knex, `creating table 'Emails'`);
+  });
 
-    await knex.schema.createTable('emails', (t) => {
+export const createEmailsTableIfNotExists = async (...knexs: Knex[]) =>
+  allSettled(knexs, async (knex) => {
+    if (await knex.schema.hasTable('emails')) return undefined;
+    return knex.schema.createTable('emails', (t) => {
+      report.ok(knex, `creating table 'Emails'`);
+
       t.increments('id').primary();
       t.string('src').notNullable();
       t.string('dest').notNullable();
@@ -58,14 +59,12 @@ export const createEmailsTable = async (truncate: boolean, ...knexs: Knex[]) => 
       t.text('bouncedReason');
       t.date('opened');
       t.text('cc');
-      t.string('threadId', 8), t.string('attachments');
+      t.string('threadId', 8);
+      t.string('attachments');
 
       t.index('sent');
-      t.index('src');
       t.index('dest');
       t.index(['classification', 'sent']);
       t.index(['dest', 'sent']);
-      t.index('threadId');
     });
   });
-};

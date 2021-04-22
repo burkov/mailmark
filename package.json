@@ -7,19 +7,23 @@
     "start": "ts-node src/index.ts"
   },
   "dependencies": {
-    "chalk": "^4.1.0",
+    "chalk": "^4.1.1",
+    "commander": "^7.2.0",
+    "execa": "^5.0.0",
     "faker": "^5.5.3",
     "knex": "^0.95.4",
     "mysql2": "^2.2.5",
-    "npm-check-updates": "^11.4.1",
+    "npm-check-updates": "^11.5.1",
     "ora": "^5.4.0",
     "pg": "^8.6.0",
+    "string-to-stream": "^3.0.1",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.4",
     "typesync": "^0.8.0"
   },
   "devDependencies": {
     "@types/faker": "^5.5.3",
-    "@types/pg": "^7.14.11"
+    "@types/pg": "^7.14.11",
+    "prettier": "^2.2.1"
   }
 }
